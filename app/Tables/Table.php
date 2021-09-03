@@ -30,6 +30,12 @@ class Table{
          SELECT * FROM " .static::getTable()." WHERE id=?",get_called_class(),[$id] );
     }
 
+          public static function getCount(){
+        return Config::getDb()->query("
+         SELECT DISTINCT COUNT(id) as count FROM " .static::getTable(), 
+         get_called_class());
+    }
+
         public function __get($key)
     {
         $method = 'get'.ucfirst($key);

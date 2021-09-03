@@ -1,6 +1,6 @@
 <div class="row">
 <div class="col-12">
-    <h1>Home</h1>
+    <h1>Home (<?=$count[0]->count?>)</h1>
 </div>
 <?php foreach ($posts as $post) : ?>
     <div class="col-12 col-sm-6 col-md-4 my-2">

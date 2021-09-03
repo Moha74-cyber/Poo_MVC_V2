@@ -17,10 +17,13 @@ $view = is_file("../views/$p.php") ? "../views/$p.php" : "../views/404.php";
 switch($p){
     case "home":
         $posts = \App\Tables\Posts::getAll();
+        $count = \App\Tables\Posts::getCount();
     break;
     case "single":
         $id = isset($_GET['id']) && ((int)$_GET['id']*1)>0 ? $_GET['id'] : 1;
         $posts =  \App\Tables\Posts::getOne($id);
+        $siteTitle = \App\Config::getTitle();
+        \App\Config::setTitle($posts[0]->title." | ".$siteTitle);
     break;
       case "categories":
         $categories = \App\Tables\Categories::getAll();
